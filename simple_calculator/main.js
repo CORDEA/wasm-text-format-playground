@@ -1,4 +1,4 @@
-let isPlus = true;
+let isAdd = true;
 let prevNumber = 0;
 let number = "";
 
@@ -12,10 +12,10 @@ function onClickNumber(i) {
 }
 
 function calculate(exports) {
-    if (isPlus) {
-        prevNumber = exports.plus(prevNumber, number);
+    if (isAdd) {
+        prevNumber = exports.add(prevNumber, number);
     } else {
-        prevNumber = exports.minus(prevNumber, number);
+        prevNumber = exports.sub(prevNumber, number);
     }
     console.log(prevNumber);
     number = "";
@@ -26,12 +26,12 @@ function ready(obj) {
     for (let i = 0; i < 10; i++) {
         document.getElementById(i).addEventListener("click", function() { onClickNumber(i); });
     }
-    document.getElementById("minus").addEventListener("click", function() {
+    document.getElementById("sub").addEventListener("click", function() {
         calculate(exports);
-        isPlus = false;
+        isAdd = false;
     });
-    document.getElementById("plus").addEventListener("click", function() {
+    document.getElementById("add").addEventListener("click", function() {
         calculate(exports);
-        isPlus = true;
+        isAdd = true;
     });
 }
