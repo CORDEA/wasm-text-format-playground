@@ -1,0 +1,18 @@
+.calculator {
+    display: flex;
+}
+
+.calculator > div > div {
+    display: flex;
+    height: 32px;
+    width: 120px;
+    margin: 8px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: #fafafa;
+}
+
+.calculator > div > div:hover {
+    background: #bdbdbd;
+}
