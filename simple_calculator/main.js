@@ -17,7 +17,6 @@ function calculate(exports) {
     } else {
         result = exports.sub(result, number);
     }
-    console.log(result);
     number = "";
 }
 
