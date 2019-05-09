@@ -16,3 +16,7 @@
 .calculator > div > div:hover {
     background: #bdbdbd;
 }
+
+#result {
+    margin: 8px;
+}

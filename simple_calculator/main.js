@@ -1,5 +1,5 @@
 let isAdd = true;
-let prevNumber = 0;
+let result = 0;
 let number = "";
 
 WebAssembly.instantiateStreaming(fetch('main.wasm'))
@@ -13,11 +13,11 @@ function onClickNumber(i) {
 
 function calculate(exports) {
     if (isAdd) {
-        prevNumber = exports.add(prevNumber, number);
+        result = exports.add(result, number);
     } else {
-        prevNumber = exports.sub(prevNumber, number);
+        result = exports.sub(result, number);
     }
-    console.log(prevNumber);
+    console.log(result);
     number = "";
 }
 
@@ -28,10 +28,12 @@ function ready(obj) {
     }
     document.getElementById("sub").addEventListener("click", function() {
         calculate(exports);
+        document.getElementById("result").innerHTML = result;
         isAdd = false;
     });
     document.getElementById("add").addEventListener("click", function() {
         calculate(exports);
+        document.getElementById("result").innerHTML = result;
         isAdd = true;
     });
 }
