@@ -14,6 +14,9 @@ function ready(obj) {
     obj.instance.exports.step1();
     argList = returnList;
     returnList = [];
-    obj.instance.exports.step2();
-    console.log(primes);
+    while (obj.instance.exports.step3()) {
+        obj.instance.exports.step2();
+        argList = returnList;
+        returnList = [];
+    }
 }

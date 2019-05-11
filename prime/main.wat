@@ -58,4 +58,11 @@
           )
         )
     )
+  (func (export "step3") (result i32)
+        i32.const 0
+        call $array_get
+        f32.convert_u/i32
+        f32.const 120
+        f32.sqrt
+        f32.lt)
 )
