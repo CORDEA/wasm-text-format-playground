@@ -20,4 +20,5 @@ function ready(obj) {
         returnList = [];
     }
     obj.instance.exports.step4();
+    document.getElementById("primes").innerHTML = primes.join('\n');
 }
