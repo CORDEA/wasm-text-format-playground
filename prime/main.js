@@ -10,7 +10,7 @@ const wasmObject = {
 }
 WebAssembly.instantiateStreaming(fetch('main.wasm'), wasmObject).then(obj => { ready(obj) });
 
-function ready(obj) {
+function calculate(obj) {
     obj.instance.exports.step1();
     argList = returnList;
     returnList = [];
@@ -21,4 +21,13 @@ function ready(obj) {
     }
     obj.instance.exports.step4();
     document.getElementById("primes").innerHTML = primes.join('\n');
+}
+
+function ready(obj) {
+    document.getElementById("button").addEventListener("click", function() {
+        returnList = [];
+        primes = [];
+        obj.instance.exports.set_max(document.getElementById("max").value);
+        calculate(obj);
+    });
 }

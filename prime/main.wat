@@ -2,6 +2,11 @@
   (import "array" "push" (func $array_push (param i32)))
   (import "array" "foundPrime" (func $found_prime (param i32)))
   (import "array" "get" (func $array_get (param i32) (result i32)))
+  (memory 1)
+  (func (export "set_max") (param i32)
+        i32.const 0
+        get_local 0
+        i32.store)
   (func (export "step1")
         (local i32)
         i32.const 2
@@ -11,7 +16,8 @@
             get_local 0
             call $array_push
             get_local 0
-            i32.const 120
+            i32.const 0
+            i32.load
             i32.eq
             br_if 1
             get_local 0
@@ -62,7 +68,9 @@
         i32.const 0
         call $array_get
         f32.convert_u/i32
-        f32.const 120
+        i32.const 0
+        i32.load
+        f32.convert_u/i32
         f32.sqrt
         f32.lt)
   (func (export "step4")
