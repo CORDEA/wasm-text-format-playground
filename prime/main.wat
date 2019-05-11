@@ -65,4 +65,26 @@
         f32.const 120
         f32.sqrt
         f32.lt)
+  (func (export "step4")
+        (local i32)
+        (local $i i32)
+        (block
+          (loop
+            get_local $i
+            call $array_get
+            set_local 0
+            get_local 0
+            i32.eqz
+            br_if 1
+
+            get_local 0
+            call $found_prime
+            get_local $i
+            i32.const 1
+            i32.add
+            set_local $i
+            br 0
+          )
+        )
+    )
 )

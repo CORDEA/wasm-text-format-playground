@@ -19,4 +19,5 @@ function ready(obj) {
         argList = returnList;
         returnList = [];
     }
+    obj.instance.exports.step4();
 }
