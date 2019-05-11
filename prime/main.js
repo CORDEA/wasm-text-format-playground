@@ -1,14 +1,19 @@
 let argList = []
-let result = []
+let returnList = []
+let primes = []
 const wasmObject = {
     array: {
-        push: function(arg) { result.push(arg) },
-        get: function(arg) { argList[arg] || 0 }
+        push: arg => returnList.push(arg),
+        foundPrime: arg => primes.push(arg),
+        get: arg => argList[arg] || 0
     }
 }
 WebAssembly.instantiateStreaming(fetch('main.wasm'), wasmObject).then(obj => { ready(obj) });
 
 function ready(obj) {
     obj.instance.exports.step1();
-    console.log(result);
+    argList = returnList;
+    returnList = [];
+    obj.instance.exports.step2();
+    console.log(primes);
 }
